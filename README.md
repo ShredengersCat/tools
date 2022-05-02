@@ -5,6 +5,6 @@
 2.FactoryPatern - реализация патерна "Factory"</br>
 3.PhpProgram - реализация первого задания
 
-Также присуцтвуют папки:</br>
+Также присутствуют папки:</br>
 1.test - нужна для работы функции getFiels в файле PhpProgram</br>
 2.test.com - pet project blog</br>
