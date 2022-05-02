@@ -1,8 +1,10 @@
 # Tools
-В корневой деректории лежат файлы:
-1.BuilderPatern - реализация патерна "Builder"
-2.FactoryPatern - реализация патерна "Factory"
+
+В корневой деректории лежат файлы:</br>
+1.BuilderPatern - реализация патерна "Builder"</br>
+2.FactoryPatern - реализация патерна "Factory"</br>
 3.PhpProgram - реализация первого задания
-Также присуцтвуют папки:
-1.test - нужна для работы функции getFiels в файле PhpProgram
-2.test.com - pet project blog
+
+Также присуцтвуют папки:</br>
+1.test - нужна для работы функции getFiels в файле PhpProgram</br>
+2.test.com - pet project blog</br>
