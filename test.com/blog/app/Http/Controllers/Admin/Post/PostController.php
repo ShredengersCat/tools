@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    public $service;
+    public PostService $service;
 
     public function __construct(PostService $service)
     {
