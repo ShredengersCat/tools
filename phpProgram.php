@@ -1,7 +1,8 @@
 <?php
 	var_dump(getFiles('test'));
     var_dump(json_encode(getFiles('test')));
-	function getFiles(string $dir): array {
+	function getFiles(string $dir): array
+    {
 		$files = array_diff(scandir($dir), ['..', '.']);
 		$result = [];
 
@@ -21,7 +22,8 @@
     $array = [1, 2, 5, 8, 10, 50];
     $item = 8;
 
-    function binarySearch(array $array, int $item, int $start = 0, int $end = null): int {
+    function binarySearch(array $array, int $item, int $start = 0, int $end = null): int
+    {
         if ($end === null) {
             $end = count($array) - 1;
         }
