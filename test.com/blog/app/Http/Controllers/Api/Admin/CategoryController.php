@@ -3,62 +3,44 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Category\StoreRequest;
+use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Service\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected CategoryService $service;
+
+    public function __construct(CategoryService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
-        //
+        return response()->json($this->service->index());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $category = $this->service->store($request->only('title'));
+        return response()->json($category);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($categoryId)
     {
-        //
+        return response()->json($this->service->show($categoryId));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $categoryId)
     {
-        //
+        $this->service->update($categoryId, $request->only('title'));
+        return response()->json('Updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy($categoryId)
     {
-        //
+        $this->service->delete($categoryId);
     }
 }

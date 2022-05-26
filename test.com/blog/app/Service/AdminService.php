@@ -5,8 +5,6 @@ use App\Interfaces\CategoryRepositoryInterface;
 use App\Interfaces\PostRepositoryInterface;
 use App\Interfaces\TagRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
-use App\Models\Tag;
-use App\Models\User;
 
 class AdminService
 {
@@ -15,7 +13,7 @@ class AdminService
     protected UserRepositoryInterface $userRepository;
     protected TagRepositoryInterface $tagRepository;
 
-    public function __construct($categoryRepository, $postRepository, $userRepository, $tagRepository)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, PostRepositoryInterface $postRepository, UserRepositoryInterface $userRepository, TagRepositoryInterface $tagRepository)
     {
         $this->categoryRepository = $categoryRepository;
         $this->postRepository = $postRepository;
@@ -23,7 +21,7 @@ class AdminService
         $this->tagRepository = $tagRepository;
     }
 
-    public function index()
+    public function index() : array
     {
         $data = [];
         $data['usersCount'] = $this->userRepository->getAllUser()->count();

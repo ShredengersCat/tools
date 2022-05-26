@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data = $request->only('name', 'email', 'password');
+        $data = $request->only('name', 'email', 'role');
         $password = Str::random(10);
         $data['password'] = Hash::make($password);
         $user = User::firstOrCreate(['email' => $data['email']], $data);

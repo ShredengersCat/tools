@@ -3,30 +3,31 @@ namespace App\Repositories;
 
 use App\Interfaces\TagRepositoryInterface;
 use App\Models\Tag;
+use Illuminate\Database\Eloquent\Collection;
 
 class TagRepository implements TagRepositoryInterface
 {
-    public function getAllTag()
+    public function getAllTag() : Collection
     {
         return Tag::all();
     }
 
-    public function getTagById($tagId)
+    public function getTagById($tagId) : Tag
     {
-        return Tag::findOrFail($tagId);
+        return Tag::whereId($tagId)->get()->first();
     }
 
-    public function createTag(array $tagDetails)
+    public function createTag(array $data) : Tag
     {
-        return Tag::firstOrCreate($tagDetails);
+        return Tag::firstOrCreate($data);
     }
 
-    public function updateTag($tagId, array $tagDetails)
+    public function updateTag(int $tagId, array $data)
     {
-        return Tag::whereId($tagId)->update($tagDetails);
+        Tag::whereId($tagId)->update($data);
     }
 
-    public function deleteTag($tagId)
+    public function deleteTag(int $tagId)
     {
         Tag::destroy($tagId);
     }
